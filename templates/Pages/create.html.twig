@@ -1,0 +1,25 @@
+{% extends 'base.html.twig'%}
+
+{% block title%}
+	Create Posts
+	{% endblock %}
+
+{%  block body%}
+	
+
+	
+<div class="container">
+		
+
+	<h3>CREATE NEW POST</h3>
+	<br>
+	<a href="../posts/" class="btn btn-primary btn-m">Back</a>
+	
+	{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+	
+    </div>	
+	{% endblock%}
+	
+	

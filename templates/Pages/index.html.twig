@@ -1,0 +1,71 @@
+{%extends 'base.html.twig'%}
+
+{%block title %}View  posts {% endblock%}
+
+{% block javascript %}
+		
+		<script type="text/javascript" src="{{ asset('assets/js/swal.js')}}"></script>
+		<script type="text/javascript" src="{{ asset('assets/js/myfun.js')}}"></script>
+		
+		
+		{% endblock %}
+
+{% block body%}
+	<div class="container">
+		
+		
+			
+		{% for successmessage in app.session.flashbag.get('message') %}
+			
+			<script>swal("{{ successmessage}}", {
+                        icon: "success",
+                        });</script>
+			
+			{% endfor %}
+     
+		
+		
+		<h3 >VIEW POSTS</h1>
+		 <br>
+		 <a href="../create/" class="btn btn-primary btn-xs">Create Post</a>
+		 <br>
+		 
+		<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Category</th>
+	  <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+	  {% for post in posts%}
+    <tr >
+      <th scope="row">{{post.id}}</th>
+      <td>{{post.title}}</td>
+      <td>{{post.description}}</td>
+      <td>{{post.category}}</td>
+	  <td>
+		  <a href="../view/{{post.id}}" class="btn btn-primary btn-xs">View</a>
+		  <a href="../edit/{{post.id}}" class="btn btn-success btn-xs">Edit</a>
+		  <button  class="btn btn-danger btn-xs" onclick="myfun({{post.id}})">Delete</button>
+	  </td>
+    </tr>
+    {% else %}
+		<tr ><td colspan="5" style="text-align: center" class=" btn-primary">No records found </td></tr>
+		
+		{% endfor %}
+  </tbody>
+</table> 
+		
+		
+		
+		
+		
+		
+	</div>
+
+{% endblock %}
+
